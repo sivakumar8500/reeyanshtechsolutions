@@ -72,12 +72,24 @@ export default function Careers() {
   const onFormSubmit = async (data: ApplyFormData) => {
     setIsSubmitting(true);
     try {
-      const response = await fetch("/api/apply", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          access_key: "YOUR_WEB3FORMS_ACCESS_KEY", // Get a free key at web3forms.com (delivers straight to your email)
+          subject: `New Job Application: ${data.jobId} from ${data.name}`,
+          jobId: data.jobId,
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          experience: data.experience,
+          portfolioUrl: data.portfolioUrl || "N/A",
+          coverLetter: data.coverLetter,
+          resumeName: data.resumeName,
+          from_name: "Reeyansh Tech Solutions Careers Portal",
+        }),
       });
 
       if (response.ok) {

@@ -119,6 +119,12 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+export async function generateStaticParams() {
+  return blogsData.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
   const post = blogsData.find((b) => b.slug === slug);

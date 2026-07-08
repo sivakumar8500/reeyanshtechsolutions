@@ -34,12 +34,19 @@ export default function Contact() {
   const onFormSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          access_key: "YOUR_WEB3FORMS_ACCESS_KEY", // Get a free key at web3forms.com (delivers straight to your email)
+          name: data.name,
+          email: data.email,
+          subject: data.subject,
+          message: data.message,
+          from_name: "Reeyansh Tech Solutions Website",
+        }),
       });
 
       if (response.ok) {
