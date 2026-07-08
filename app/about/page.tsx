@@ -177,7 +177,7 @@ export default function About() {
                     <div className={`w-full aspect-square rounded-xl bg-gradient-to-br ${member.imageGradient} flex items-center justify-center text-4xl font-extrabold text-white mb-5 shadow-inner relative overflow-hidden`}>
                       {member.imagePath ? (
                         <img
-                          src={member.imagePath}
+                          src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${member.imagePath}`}
                           alt={member.name}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />

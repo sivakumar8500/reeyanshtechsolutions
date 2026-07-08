@@ -71,7 +71,7 @@ export default function Portfolio() {
                     <div className={`w-full aspect-video ${project.logoPath ? "bg-slate-950" : `bg-gradient-to-br ${project.imageGradient}`} flex items-center justify-center relative shadow-inner overflow-hidden group/visual`}>
                       {project.logoPath ? (
                         <img
-                          src={project.logoPath}
+                          src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${project.logoPath}`}
                           alt={project.title}
                           className="w-full h-full object-fill group-hover/visual:scale-105 transition-transform duration-500"
                         />

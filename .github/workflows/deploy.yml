@@ -40,6 +40,8 @@ jobs:
         run: npm ci
 
       - name: Build Static Site with Next.js
+        env:
+          NEXT_PUBLIC_BASE_PATH: "/reeyanshtechsolutions"
         run: npm run build
 
       - name: Upload static files artifact

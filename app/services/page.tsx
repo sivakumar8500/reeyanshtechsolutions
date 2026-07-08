@@ -108,7 +108,7 @@ export default function Services() {
                     {service.imagePath ? (
                       <div className="relative w-full h-full rounded-xl overflow-hidden">
                         <img
-                          src={service.imagePath}
+                          src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${service.imagePath}`}
                           alt={service.title}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
