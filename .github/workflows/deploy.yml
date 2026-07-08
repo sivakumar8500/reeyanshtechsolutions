@@ -27,7 +27,7 @@ jobs:
 
       # Only deploy on pushes to the main branch (not on pull requests)
       - name: Deploy to Vercel (Production)
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && secrets.VERCEL_TOKEN != ''
         uses: amondnet/vercel-action@v25
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
