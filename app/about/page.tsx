@@ -1,11 +1,23 @@
-"use client";
-
 import React from "react";
+import { Metadata } from "next";
 import Link from "next/link";
 import { Twitter, Linkedin, Github, Award, Users, Compass, Eye, ShieldCheck, Flame } from "lucide-react";
 import Card from "@/components/ui/Card";
 import ScrollReveal from "@/components/ScrollReveal";
 import { teamData } from "@/lib/data";
+
+export const metadata: Metadata = {
+  title: "About Us & Engineering Leadership",
+  description: "Learn about the mission, values, and engineering leadership team of Reeyansh Tech Solutions.",
+  alternates: {
+    canonical: "/about/",
+  },
+  openGraph: {
+    title: "About Us & Engineering Leadership | Reeyansh Tech Solutions",
+    description: "Learn about the mission, values, and engineering leadership team of Reeyansh Tech Solutions.",
+    url: "https://reeyanshtechsolutions.billnserve.com/about/",
+  },
+};
 
 export default function About() {
   const stats = [

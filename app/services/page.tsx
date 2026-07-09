@@ -1,12 +1,24 @@
-"use client";
-
 import React from "react";
+import { Metadata } from "next";
 import Link from "next/link";
 import { CheckCircle2, Code2, Smartphone, Palette, Cloud, ArrowRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import ScrollReveal from "@/components/ScrollReveal";
 import { servicesData } from "@/lib/data";
+
+export const metadata: Metadata = {
+  title: "Enterprise Software Services",
+  description: "Explore our premium engineering offerings: Web Applications, Mobile Applications, Data Analytics, and Agentic AI development.",
+  alternates: {
+    canonical: "/services/",
+  },
+  openGraph: {
+    title: "Enterprise Software Services | Reeyansh Tech Solutions",
+    description: "Explore our premium engineering offerings: Web Applications, Mobile Applications, Data Analytics, and Agentic AI development.",
+    url: "https://reeyanshtechsolutions.billnserve.com/services/",
+  },
+};
 
 const serviceIcons = {
   Code2: Code2,

@@ -4,7 +4,7 @@ import { blogsData } from "@/lib/data";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://reeyanshtech.com";
+  const baseUrl = "https://reeyanshtechsolutions.billnserve.com";
 
   // Static routes
   const staticRoutes = [

@@ -1,4 +1,5 @@
 import React from "react";
+import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Calendar, Clock, User } from "lucide-react";
@@ -125,6 +126,31 @@ export async function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = blogsData.find((b) => b.slug === slug);
+
+  if (!post) {
+    return {
+      title: "Insight Not Found",
+    };
+  }
+
+  return {
+    title: post.title,
+    description: post.summary,
+    openGraph: {
+      title: post.title,
+      description: post.summary,
+      url: `https://reeyanshtechsolutions.billnserve.com/blog/${post.slug}/`,
+      type: "article",
+      publishedTime: new Date(post.date).toISOString(),
+      authors: [post.author.name],
+      tags: post.tags,
+    },
+  };
+}
+
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
   const post = blogsData.find((b) => b.slug === slug);
@@ -140,6 +166,35 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   return (
     <div className="relative w-full bg-slate-950 py-12 md:py-20 overflow-hidden">
+      {/* Article Structured Data (JSON-LD) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "headline": post.title,
+            "description": post.summary,
+            "datePublished": new Date(post.date).toISOString(),
+            "author": {
+              "@type": "Person",
+              "name": post.author.name,
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Reeyansh Tech Solutions",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://reeyanshtechsolutions.billnserve.com/logo-icon.png",
+              },
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": `https://reeyanshtechsolutions.billnserve.com/blog/${post.slug}/`,
+            },
+          }),
+        }}
+      />
       
       {/* Background ambient glows */}
       <div className="absolute top-20 left-10 h-72 w-72 rounded-full bg-indigo-500/5 blur-[120px] pointer-events-none" />

@@ -35,15 +35,14 @@ export const metadata: Metadata = {
     "Bengaluru Software Company",
   ],
   authors: [{ name: "Reeyansh Tech Solutions" }],
-  creator: "Reeyansh Tech Solutions",
-  metadataBase: new URL("https://reeyanshtech.com"),
+  metadataBase: new URL("https://reeyanshtechsolutions.billnserve.com"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://reeyanshtech.com",
+    url: "https://reeyanshtechsolutions.billnserve.com",
     title: "Reeyansh Tech Solutions - Enterprise Web & Mobile Engineering",
     description:
       "Enterprise-grade custom web systems, high-performance Flutter mobile apps, responsive UI/UX designs, and secure AWS/GCP cloud configurations.",
@@ -71,8 +70,8 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Reeyansh Tech Solutions",
-  "url": "https://reeyanshtech.com",
-  "logo": "https://reeyanshtech.com/logo.png",
+  "url": "https://reeyanshtechsolutions.billnserve.com",
+  "logo": "https://reeyanshtechsolutions.billnserve.com/logo-icon.png",
   "sameAs": [
     "https://linkedin.com/company/reeyansh-tech-solutions",
     "https://twitter.com/reeyanshtech",
