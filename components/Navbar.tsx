@@ -51,7 +51,12 @@ export const Navbar: React.FC = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2.5">
+            <img
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logo-icon.png`}
+              alt="Reeyansh Tech Logo"
+              className="h-8 w-8 rounded-lg object-contain bg-slate-900 border border-slate-850 p-1 shadow-md"
+            />
             <span className="font-outfit text-xl font-extrabold tracking-tight text-white sm:text-2xl">
               Reeyansh<span className="bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">Tech</span>
             </span>

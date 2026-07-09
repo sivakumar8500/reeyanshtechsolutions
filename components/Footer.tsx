@@ -12,7 +12,12 @@ export const Footer: React.FC = () => {
           
           {/* Logo & Brand Info */}
           <div className="space-y-4">
-            <Link href="/" className="flex items-center gap-2">
+            <Link href="/" className="flex items-center gap-2.5">
+              <img
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}/logo-icon.png`}
+                alt="Reeyansh Tech Logo"
+                className="h-7 w-7 rounded-lg object-contain bg-slate-900 border border-slate-850 p-1 shadow-md"
+              />
               <span className="font-outfit text-xl font-extrabold tracking-tight text-white">
                 Reeyansh<span className="bg-gradient-to-r from-blue-400 to-indigo-500 bg-clip-text text-transparent">Tech</span>
               </span>
