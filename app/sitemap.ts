@@ -16,7 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/blog",
     "/contact",
   ].map((route) => ({
-    url: `${baseUrl}${route}`,
+    url: route === "" ? `${baseUrl}/` : `${baseUrl}${route}/`,
     lastModified: new Date().toISOString(),
     changeFrequency: "weekly" as const,
     priority: route === "" ? 1.0 : 0.8,
@@ -24,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Dynamic blog routes
   const blogRoutes = blogsData.map((blog) => ({
-    url: `${baseUrl}/blog/${blog.slug}`,
+    url: `${baseUrl}/blog/${blog.slug}/`,
     lastModified: new Date().toISOString(),
     changeFrequency: "monthly" as const,
     priority: 0.6,
