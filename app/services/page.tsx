@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Enterprise Software Services | Reeyansh Tech Solutions",
     description: "Explore our premium engineering offerings: Web Applications, Mobile Applications, Data Analytics, and Agentic AI development.",
-    url: "https://reeyanshtechsolutions.billnserve.com/services/",
+    url: "https://rts.billnserve.com/services/",
   },
 };
 

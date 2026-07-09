@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Insights & Tech Blogs | Reeyansh Tech Solutions",
     description: "Read the latest engineering articles, retail tech trends, and cloud automation guides from Reeyansh Tech Solutions.",
-    url: "https://reeyanshtechsolutions.billnserve.com/blog/",
+    url: "https://rts.billnserve.com/blog/",
   },
 };
 

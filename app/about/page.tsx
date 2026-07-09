@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About Us & Engineering Leadership | Reeyansh Tech Solutions",
     description: "Learn about the mission, values, and engineering leadership team of Reeyansh Tech Solutions.",
-    url: "https://reeyanshtechsolutions.billnserve.com/about/",
+    url: "https://rts.billnserve.com/about/",
   },
 };
 

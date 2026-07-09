@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Careers & Open Positions | Reeyansh Tech Solutions",
     description: "Join our agile engineering team at Reeyansh Tech Solutions. Explore roles in frontend development, Flutter, and Cloud DevOps engineering.",
-    url: "https://reeyanshtechsolutions.billnserve.com/careers/",
+    url: "https://rts.billnserve.com/careers/",
   },
 };
 

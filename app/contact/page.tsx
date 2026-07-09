@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Contact Us & Request a Quote | Reeyansh Tech Solutions",
     description: "Get in touch with Reeyansh Tech Solutions. Request a custom software engineering quote, project consultation, or ask questions.",
-    url: "https://reeyanshtechsolutions.billnserve.com/contact/",
+    url: "https://rts.billnserve.com/contact/",
   },
 };
 

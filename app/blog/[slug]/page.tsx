@@ -142,7 +142,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     openGraph: {
       title: post.title,
       description: post.summary,
-      url: `https://reeyanshtechsolutions.billnserve.com/blog/${post.slug}/`,
+      url: `https://rts.billnserve.com/blog/${post.slug}/`,
       type: "article",
       publishedTime: new Date(post.date).toISOString(),
       authors: [post.author.name],
@@ -185,12 +185,12 @@ export default async function BlogPostPage({ params }: PageProps) {
               "name": "Reeyansh Tech Solutions",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://reeyanshtechsolutions.billnserve.com/logo-icon.png",
+                "url": "https://rts.billnserve.com/logo-icon.png",
               },
             },
             "mainEntityOfPage": {
               "@type": "WebPage",
-              "@id": `https://reeyanshtechsolutions.billnserve.com/blog/${post.slug}/`,
+              "@id": `https://rts.billnserve.com/blog/${post.slug}/`,
             },
           }),
         }}

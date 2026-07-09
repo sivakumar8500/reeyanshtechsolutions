@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Case Studies & Portfolio | Reeyansh Tech Solutions",
     description: "Explore our enterprise software solutions: Scan Basket retail app, Bill & Serve billing ecosystem, and Home Therapy scheduling app.",
-    url: "https://reeyanshtechsolutions.billnserve.com/portfolio/",
+    url: "https://rts.billnserve.com/portfolio/",
   },
 };
 
