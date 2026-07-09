@@ -65,7 +65,7 @@ export const Navbar: React.FC = () => {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive = pathname === link.href || pathname === `${link.href}/`;
               return (
                 <Link
                   key={link.name}
@@ -122,7 +122,7 @@ export const Navbar: React.FC = () => {
           >
             <div className="space-y-1.5 px-4 pt-2 pb-6 flex flex-col">
               {navLinks.map((link) => {
-                const isActive = pathname === link.href;
+                const isActive = pathname === link.href || pathname === `${link.href}/`;
                 return (
                   <Link
                     key={link.name}
