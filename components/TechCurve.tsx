@@ -93,10 +93,11 @@ export const TechCurve: React.FC = () => {
   }, []);
 
   return (
-    // Container: circle centred at the right edge of the hero
+    // Shift right by 50% of own width so the circle CENTER sits at the right edge of the column.
+    // The hero section has overflow-hidden, which clips the right half naturally.
     <div
       className="relative select-none flex-shrink-0"
-      style={{ width: RADIUS * 2, height: RADIUS * 2 }}
+      style={{ width: RADIUS * 2, height: RADIUS * 2, transform: 'translateX(50%)' }}
     >
       {/* Faint orbit ring (left half only) */}
       <svg
@@ -111,11 +112,9 @@ export const TechCurve: React.FC = () => {
             <stop offset="100%" stopColor="#A855F7" stopOpacity="0.1" />
           </linearGradient>
         </defs>
-        {/* Full orbit ring */}
-        <circle
-          cx={RADIUS}
-          cy={RADIUS}
-          r={RADIUS - 2}
+        {/* Left semicircle arc only (visible portion) — top → left → bottom */}
+        <path
+          d={`M ${RADIUS} 2 A ${RADIUS - 2} ${RADIUS - 2} 0 0 1 ${RADIUS} ${RADIUS * 2 - 2}`}
           stroke="url(#ring-grad)"
           strokeWidth="1"
           strokeDasharray="6 5"

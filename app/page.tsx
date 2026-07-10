@@ -91,12 +91,10 @@ export default function Home() {
               </ScrollReveal>
             </div>
 
-            {/* Right Column: Animated Tech Curve */}
-            <div className="lg:col-span-5 flex justify-center items-center relative w-full h-[420px] sm:h-[460px] lg:h-[500px] mt-6 lg:mt-0">
-              <ScrollReveal direction="left" delay={0.3} className="w-full h-full flex items-center justify-center">
-                <TechCurve />
-              </ScrollReveal>
+            <div className="lg:col-span-5 hidden lg:flex justify-end items-center relative w-full h-[420px]">
+              <TechCurve />
             </div>
+
             
           </div>
         </div>
