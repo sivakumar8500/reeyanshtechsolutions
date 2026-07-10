@@ -61,7 +61,7 @@ export default function Home() {
 
               <ScrollReveal direction="up" delay={0.25}>
                 <h1 className="font-outfit text-4xl sm:text-6xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-white leading-tight">
-                  Architecting Next-Gen <br className="hidden sm:inline" />
+                  Architecting Next-Gen{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500">
                     Digital Ecosystems
                   </span>

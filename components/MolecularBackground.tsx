@@ -98,17 +98,21 @@ export const MolecularBackground: React.FC<MolecularBackgroundProps> = ({
 
     particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
 
-    // Helper to generate a round dot texture programmatically
+    // Helper to generate a blurred circular glow texture programmatically
     const createCircleTexture = () => {
       const canvas = document.createElement("canvas");
-      canvas.width = 16;
-      canvas.height = 16;
+      canvas.width = 32;
+      canvas.height = 32;
       const ctx = canvas.getContext("2d");
       if (ctx) {
-        ctx.beginPath();
-        ctx.arc(8, 8, 8, 0, Math.PI * 2);
-        ctx.fillStyle = "#ffffff";
-        ctx.fill();
+        // Create radial gradient for a soft blurred glow circle
+        const gradient = ctx.createRadialGradient(16, 16, 2, 16, 16, 14);
+        gradient.addColorStop(0, "rgba(255, 255, 255, 1)");
+        gradient.addColorStop(0.35, "rgba(217, 242, 255, 0.85)");
+        gradient.addColorStop(1, "rgba(217, 242, 255, 0)");
+        
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 32, 32);
       }
       const texture = new THREE.CanvasTexture(canvas);
       texture.needsUpdate = true; // Ensure GPU updates the texture
@@ -119,9 +123,9 @@ export const MolecularBackground: React.FC<MolecularBackgroundProps> = ({
     const pMaterial = new THREE.PointsMaterial({
       color: 0xd9f2ff, // soft cyan-white
       map: createCircleTexture(),
-      size: 5, // slightly larger so the circle is distinct!
+      size: 10, // increased to support the blurry outer glow area
       transparent: true,
-      opacity: 0.75,
+      opacity: 0.85,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
     });
