@@ -7,7 +7,8 @@ import { ArrowRight, Code2, Smartphone, Palette, Cloud, CheckCircle, ArrowUpRigh
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import ScrollReveal from "@/components/ScrollReveal";
-import TechCurve from "@/components/TechCurve";
+// Lazy load TechCurve (RAF animation) and MolecularBackground (WebGL) — both are client-only
+const TechCurve = dynamic(() => import("@/components/TechCurve").then(m => m.TechCurve), { ssr: false });
 import { servicesData, projectsData, testimonialsData } from "@/lib/data";
 
 // Lazy load MolecularBackground to ensure WebGL context is initialized only in browser environment
@@ -91,12 +92,20 @@ export default function Home() {
               </ScrollReveal>
             </div>
 
-            <div className="lg:col-span-5 hidden lg:flex justify-end items-center relative w-full h-[420px]">
-              <TechCurve />
+            {/* Desktop right-side orbit (lg+) */}
+            <div className="lg:col-span-5 hidden lg:flex justify-end items-center relative w-full h-[500px]">
+              <TechCurve variant="right" />
             </div>
 
-            
           </div>
+        </div>
+
+        {/* Mobile bottom dome orbit (hidden on lg+) */}
+        <div
+          className="block lg:hidden absolute bottom-0 left-1/2 z-10 pointer-events-none"
+          style={{ transform: 'translateX(-50%) translateY(50%)' }}
+        >
+          <TechCurve variant="bottom" />
         </div>
 
         {/* Ambient bottom gradient fade */}
