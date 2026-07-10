@@ -213,8 +213,8 @@ export const TechCurve: React.FC = () => {
       {techItems.map((item, idx) => {
         const isHovered = hoveredIndex === idx;
         
-        // Offset each card evenly spaced along the 100-step orbit circle
-        const keyframes = generateKeyframes(idx * (100 / techItems.length));
+        // Space items with wider gaps (use 12 virtual slots for 18 items gives wider separation)
+        const keyframes = generateKeyframes(idx * (100 / 12));
 
         return (
           <div
@@ -232,7 +232,7 @@ export const TechCurve: React.FC = () => {
                 opacity: keyframes.opacity,
               }}
               transition={{
-                duration: 25,
+                duration: 45,
                 repeat: Infinity,
                 ease: "linear",
               }}
