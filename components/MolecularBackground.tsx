@@ -11,7 +11,7 @@ interface MolecularBackgroundProps {
 
 export const MolecularBackground: React.FC<MolecularBackgroundProps> = ({
   particleCount = 120,
-  connectionDistance = 120,
+  connectionDistance = 60,
   speed = 0.5,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -123,7 +123,7 @@ export const MolecularBackground: React.FC<MolecularBackgroundProps> = ({
     const pMaterial = new THREE.PointsMaterial({
       color: 0xd9f2ff, // soft cyan-white
       map: createCircleTexture(),
-      size: 10, // increased to support the blurry outer glow area
+      size: 4.5, // decreased to show small points
       transparent: true,
       opacity: 0.85,
       blending: THREE.AdditiveBlending,
