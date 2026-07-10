@@ -204,7 +204,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         
         {/* Back Link */}
         <Link
-          href="/blog"
+          href="/blog/"
           className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-400 hover:text-white transition-colors duration-200 mb-8"
         >
           <ArrowLeft className="h-4 w-4" />
@@ -270,7 +270,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           <h3 className="font-outfit text-2xl font-bold text-white mb-8">Related Insights</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {relatedPosts.map((rPost) => (
-              <Link key={rPost.slug} href={`/blog/${rPost.slug}`} className="block h-full group">
+              <Link key={rPost.slug} href={`/blog/${rPost.slug}/`} className="block h-full group">
                 <Card className="h-full flex flex-col justify-between p-0 overflow-hidden border-slate-900 bg-slate-950/40" glowColor="blue">
                   <div>
                     <div className={`w-full aspect-video bg-gradient-to-br ${rPost.imageGradient} flex items-center justify-center text-lg font-bold text-white relative shadow-inner overflow-hidden group`}>

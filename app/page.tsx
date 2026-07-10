@@ -7,6 +7,7 @@ import { ArrowRight, Code2, Smartphone, Palette, Cloud, CheckCircle, ArrowUpRigh
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import ScrollReveal from "@/components/ScrollReveal";
+import TechCurve from "@/components/TechCurve";
 import { servicesData, projectsData, testimonialsData } from "@/lib/data";
 
 // Lazy load MolecularBackground to ensure WebGL context is initialized only in browser environment
@@ -44,46 +45,60 @@ export default function Home() {
     <div className="relative w-full overflow-hidden">
       
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[90vh] flex items-center justify-center py-20">
+      <section className="relative min-h-[90vh] flex items-center justify-center py-20 lg:py-28 overflow-hidden">
         <MolecularBackground />
         
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center relative z-20">
-          <ScrollReveal direction="up" delay={0.1}>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-xs font-semibold uppercase tracking-wider text-indigo-300 backdrop-blur-md mb-6">
-              Empowering Digital Innovation
-            </span>
-          </ScrollReveal>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-20 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            {/* Left Column: Hero Content */}
+            <div className="lg:col-span-7 text-center lg:text-left flex flex-col items-center lg:items-start">
+              <ScrollReveal direction="up" delay={0.1}>
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-xs font-semibold uppercase tracking-wider text-indigo-300 backdrop-blur-md mb-6">
+                  Empowering Digital Innovation
+                </span>
+              </ScrollReveal>
 
-          <ScrollReveal direction="up" delay={0.25}>
-            <h1 className="font-outfit text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white leading-tight">
-              Architecting Next-Gen <br className="hidden sm:inline" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500">
-                Digital Ecosystems
-              </span>
-            </h1>
-          </ScrollReveal>
+              <ScrollReveal direction="up" delay={0.25}>
+                <h1 className="font-outfit text-4xl sm:text-6xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-white leading-tight">
+                  Architecting Next-Gen <br className="hidden sm:inline" />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500">
+                    Digital Ecosystems
+                  </span>
+                </h1>
+              </ScrollReveal>
 
-          <ScrollReveal direction="up" delay={0.4}>
-            <p className="mx-auto max-w-2xl text-base sm:text-lg md:text-xl text-slate-300 mt-6 leading-relaxed">
-              We design, build, and deploy premium enterprise web applications, cross-platform mobile products, and automated cloud infrastructures.
-            </p>
-          </ScrollReveal>
+              <ScrollReveal direction="up" delay={0.4}>
+                <p className="max-w-2xl text-base sm:text-lg md:text-xl text-slate-300 mt-6 leading-relaxed">
+                  We design, build, and deploy premium enterprise web applications, cross-platform mobile products, and automated cloud infrastructures.
+                </p>
+              </ScrollReveal>
 
-          <ScrollReveal direction="up" delay={0.55}>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
-              <Link href="/services">
-                <Button size="lg" className="w-full sm:w-auto gap-2 group">
-                  Explore Services
-                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                </Button>
-              </Link>
-              <Link href="/contact">
-                <Button size="lg" variant="secondary" className="w-full sm:w-auto">
-                  Let's Collaborate
-                </Button>
-              </Link>
+              <ScrollReveal direction="up" delay={0.55}>
+                <div className="flex flex-col sm:flex-row items-center gap-4 mt-10 w-full sm:w-auto">
+                  <Link href="/services/" className="w-full sm:w-auto">
+                    <Button size="lg" className="w-full gap-2 group">
+                      Explore Services
+                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    </Button>
+                  </Link>
+                  <Link href="/contact/" className="w-full sm:w-auto">
+                    <Button size="lg" variant="secondary" className="w-full">
+                      Let's Collaborate
+                    </Button>
+                  </Link>
+                </div>
+              </ScrollReveal>
             </div>
-          </ScrollReveal>
+
+            {/* Right Column: Animated Tech Curve */}
+            <div className="lg:col-span-5 flex justify-center lg:justify-end relative w-full h-[400px] sm:h-[450px] md:h-[500px] lg:h-[550px] mt-10 lg:mt-0">
+              <ScrollReveal direction="left" delay={0.3} className="w-full h-full flex items-center justify-center">
+                <TechCurve />
+              </ScrollReveal>
+            </div>
+            
+          </div>
         </div>
 
         {/* Ambient bottom gradient fade */}
@@ -241,13 +256,13 @@ export default function Home() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
-                <Link href="/contact">
+                <Link href="/contact/">
                   <Button size="lg" className="w-full sm:w-auto gap-2">
                     Schedule a Consultation
                     <ArrowRight className="h-4 w-4" />
                   </Button>
                 </Link>
-                <Link href="/portfolio">
+                <Link href="/portfolio/">
                   <Button size="lg" variant="secondary" className="w-full sm:w-auto">
                     View Our Work
                   </Button>

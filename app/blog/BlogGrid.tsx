@@ -84,7 +84,7 @@ export default function BlogGrid() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredBlogs.map((blog, index) => (
             <ScrollReveal key={blog.slug} direction="up" delay={index * 0.1}>
-              <Link href={`/blog/${blog.slug}`} className="block h-full group">
+              <Link href={`/blog/${blog.slug}/`} className="block h-full group">
                 <Card className="h-full flex flex-col justify-between p-0 overflow-hidden border-slate-900 bg-slate-950/40" glowColor="purple">
                   <div>
                     {/* Visual Card Image Cover */}

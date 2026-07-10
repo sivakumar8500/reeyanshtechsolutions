@@ -43,16 +43,16 @@ export const Footer: React.FC = () => {
             <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-100 mb-4">Company</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/about" className="hover:text-white transition-colors duration-200">About Us</Link>
+                <Link href="/about/" className="hover:text-white transition-colors duration-200">About Us</Link>
               </li>
               <li>
-                <Link href="/portfolio" className="hover:text-white transition-colors duration-200">Portfolio</Link>
+                <Link href="/portfolio/" className="hover:text-white transition-colors duration-200">Portfolio</Link>
               </li>
               <li>
-                <Link href="/careers" className="hover:text-white transition-colors duration-200">Careers</Link>
+                <Link href="/careers/" className="hover:text-white transition-colors duration-200">Careers</Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-white transition-colors duration-200">Blog & Insights</Link>
+                <Link href="/blog/" className="hover:text-white transition-colors duration-200">Blog & Insights</Link>
               </li>
             </ul>
           </div>
@@ -62,16 +62,16 @@ export const Footer: React.FC = () => {
             <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-100 mb-4">Services</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/services" className="hover:text-white transition-colors duration-200">Web Development</Link>
+                <Link href="/services/" className="hover:text-white transition-colors duration-200">Web Development</Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-white transition-colors duration-200">Mobile Development</Link>
+                <Link href="/services/" className="hover:text-white transition-colors duration-200">Mobile Development</Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-white transition-colors duration-200">UI/UX Product Design</Link>
+                <Link href="/services/" className="hover:text-white transition-colors duration-200">UI/UX Product Design</Link>
               </li>
               <li>
-                <Link href="/services" className="hover:text-white transition-colors duration-200">Cloud & DevOps</Link>
+                <Link href="/services/" className="hover:text-white transition-colors duration-200">Cloud & DevOps</Link>
               </li>
             </ul>
           </div>
@@ -100,8 +100,8 @@ export const Footer: React.FC = () => {
         <div className="mt-12 pt-8 border-t border-slate-900 text-xs flex flex-col sm:flex-row justify-between items-center gap-4">
           <p>© {currentYear} Reeyansh Tech Solutions. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link href="/contact" className="hover:text-white transition-colors duration-200">Privacy Policy</Link>
-            <Link href="/contact" className="hover:text-white transition-colors duration-200">Terms of Service</Link>
+            <Link href="/contact/" className="hover:text-white transition-colors duration-200">Privacy Policy</Link>
+            <Link href="/contact/" className="hover:text-white transition-colors duration-200">Terms of Service</Link>
           </div>
         </div>
       </div>

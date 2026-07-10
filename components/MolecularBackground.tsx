@@ -55,8 +55,20 @@ export const MolecularBackground: React.FC<MolecularBackgroundProps> = ({
     const positions = new Float32Array(particleCount * 3);
     const velocities: number[] = [];
 
-    // Store particle positions
-    const particlesData: { x: number; y: number; z: number; vx: number; vy: number; vz: number }[] = [];
+    // Store particle positions and HSL colors
+    const particlesData: {
+      x: number;
+      y: number;
+      z: number;
+      vx: number;
+      vy: number;
+      vz: number;
+      r: number;
+      g: number;
+      b: number;
+    }[] = [];
+    const colors = new Float32Array(particleCount * 3);
+    const colorObj = new THREE.Color();
 
     for (let i = 0; i < particleCount; i++) {
       const x = Math.random() * boxSize - halfBox;
@@ -72,17 +84,44 @@ export const MolecularBackground: React.FC<MolecularBackgroundProps> = ({
       const vy = (Math.random() - 0.5) * speed;
       const vz = (Math.random() - 0.5) * speed;
 
-      particlesData.push({ x, y, z, vx, vy, vz });
+      // Soft cyan-white colors to match the Pujasri constellation style
+      const r = 0.85;
+      const g = 0.95;
+      const b = 1.0;
+
+      colors[i * 3] = r;
+      colors[i * 3 + 1] = g;
+      colors[i * 3 + 2] = b;
+
+      particlesData.push({ x, y, z, vx, vy, vz, r, g, b });
     }
 
     particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
 
-    // Particle texture (soft glow dot)
+    // Helper to generate a round dot texture programmatically
+    const createCircleTexture = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = 16;
+      canvas.height = 16;
+      const ctx = canvas.getContext("2d");
+      if (ctx) {
+        ctx.beginPath();
+        ctx.arc(8, 8, 8, 0, Math.PI * 2);
+        ctx.fillStyle = "#ffffff";
+        ctx.fill();
+      }
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.needsUpdate = true; // Ensure GPU updates the texture
+      return texture;
+    };
+
+    // Particle texture (soft glow dot) with solid color and circular shape
     const pMaterial = new THREE.PointsMaterial({
-      color: 0x818cf8, // Indigo-400
-      size: 4,
+      color: 0xd9f2ff, // soft cyan-white
+      map: createCircleTexture(),
+      size: 5, // slightly larger so the circle is distinct!
       transparent: true,
-      opacity: 0.8,
+      opacity: 0.75,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
     });
@@ -111,15 +150,20 @@ export const MolecularBackground: React.FC<MolecularBackgroundProps> = ({
     scene.add(lines);
 
     // Mouse Interaction
-    const mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
+    const mouse = { x: 0, y: 0, targetX: 0, targetY: 0, isActive: false };
     const handleMouseMove = (e: MouseEvent) => {
       // Normalize mouse between -1 and 1
       const rect = container.getBoundingClientRect();
       mouse.targetX = ((e.clientX - rect.left) / container.clientWidth) * 2 - 1;
       mouse.targetY = -((e.clientY - rect.top) / container.clientHeight) * 2 + 1;
+      mouse.isActive = true;
+    };
+    const handleMouseLeave = () => {
+      mouse.isActive = false;
     };
 
     window.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseleave", handleMouseLeave);
 
     // Resize Handler
     const handleResize = () => {
@@ -165,15 +209,22 @@ export const MolecularBackground: React.FC<MolecularBackgroundProps> = ({
         if (particle.y < -halfBox || particle.y > halfBox) particle.vy = -particle.vy;
         if (particle.z < -halfBox || particle.z > halfBox) particle.vz = -particle.vz;
 
-        // Mouse interaction: repel particles within range
-        const dx = particle.x - mouse3D.x;
-        const dy = particle.y - mouse3D.y;
-        const dz = particle.z - mouse3D.z;
-        const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
-        if (dist < 100) {
-          const force = (100 - dist) / 100 * 0.5;
-          particle.x += dx / dist * force * 10;
-          particle.y += dy / dist * force * 10;
+        // Mouse interaction: attract only nearby molecules to the cursor position (within 120px)
+        if (mouse.isActive) {
+          const dx = mouse3D.x - particle.x;
+          const dy = mouse3D.y - particle.y;
+          const dz = mouse3D.z - particle.z;
+          const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+          
+          const maxDistance = 120; // Attraction range limit
+          if (dist < maxDistance) {
+            // Stronger pull when closer, fading to 0 at the boundary
+            const force = (maxDistance - dist) / maxDistance;
+            const pullSpeed = 0.05 * force;
+            particle.x += dx * pullSpeed;
+            particle.y += dy * pullSpeed;
+            particle.z += dz * pullSpeed;
+          }
         }
 
         // Apply updated coordinates to geometry attribute
@@ -203,11 +254,9 @@ export const MolecularBackground: React.FC<MolecularBackgroundProps> = ({
             linePositionAttribute.setXYZ(vertexIndex + 1, p2.x, p2.y, p2.z);
             vertexIndex += 2;
 
-            // Colors: gradient line matching purple/blue themes
-            // Vertex 1: Blue (0.2, 0.5, 1)
-            lineColorAttribute.setXYZ(colorIndex, 0.2 * alpha, 0.5 * alpha, 1.0 * alpha);
-            // Vertex 2: Indigo/Purple (0.5, 0.2, 1)
-            lineColorAttribute.setXYZ(colorIndex + 1, 0.5 * alpha, 0.2 * alpha, 1.0 * alpha);
+            // Colors: blend gradient line matching the rainbow colors of connected points
+            lineColorAttribute.setXYZ(colorIndex, p1.r * alpha, p1.g * alpha, p1.b * alpha);
+            lineColorAttribute.setXYZ(colorIndex + 1, p2.r * alpha, p2.g * alpha, p2.b * alpha);
             colorIndex += 2;
 
             connectionCount++;
@@ -232,12 +281,14 @@ export const MolecularBackground: React.FC<MolecularBackgroundProps> = ({
     return () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseleave", handleMouseLeave);
       window.removeEventListener("resize", handleResize);
 
       scene.remove(pointCloud);
       scene.remove(lines);
       particleGeometry.dispose();
       lineGeometry.dispose();
+      if (pMaterial.map) pMaterial.map.dispose();
       pMaterial.dispose();
       lineMaterial.dispose();
       renderer.dispose();
@@ -247,7 +298,7 @@ export const MolecularBackground: React.FC<MolecularBackgroundProps> = ({
   return (
     <div
       ref={containerRef}
-      className="absolute inset-0 -z-10 w-full h-full bg-slate-950 overflow-hidden"
+      className="absolute inset-0 z-0 w-full h-full bg-slate-950 overflow-hidden"
     >
       {/* Absolute dark radial overlay to concentrate visual center */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(2,6,23,0.85)_100%)] pointer-events-none z-10" />

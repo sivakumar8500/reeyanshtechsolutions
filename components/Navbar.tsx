@@ -9,12 +9,12 @@ import Button from "./ui/Button";
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "Services", href: "/services" },
-  { name: "Portfolio", href: "/portfolio" },
-  { name: "Careers", href: "/careers" },
-  { name: "Blog", href: "/blog" },
-  { name: "About Us", href: "/about" },
-  { name: "Contact", href: "/contact" },
+  { name: "Services", href: "/services/" },
+  { name: "Portfolio", href: "/portfolio/" },
+  { name: "Careers", href: "/careers/" },
+  { name: "Blog", href: "/blog/" },
+  { name: "About Us", href: "/about/" },
+  { name: "Contact", href: "/contact/" },
 ];
 
 export const Navbar: React.FC = () => {
@@ -89,7 +89,7 @@ export const Navbar: React.FC = () => {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center">
-            <Link href="/contact">
+            <Link href="/contact/">
               <Button size="sm" className="gap-1.5 group">
                 Get a Quote
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -138,7 +138,7 @@ export const Navbar: React.FC = () => {
                 );
               })}
               <div className="pt-4 px-3">
-                <Link href="/contact" className="block w-full">
+                <Link href="/contact/" className="block w-full">
                   <Button className="w-full justify-center gap-1.5">
                     Get a Quote
                     <ArrowUpRight className="h-4 w-4" />
