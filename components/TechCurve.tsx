@@ -2,53 +2,115 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Github, Bot, Database } from "lucide-react";
-
-// Tailwind Icon SVG
-const TailwindIcon = () => (
-  <svg viewBox="0 0 24 24" className="h-7 w-7 text-[#38BDF8]" fill="currentColor">
-    <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z" />
-  </svg>
-);
-
-// Python Icon SVG
-const PythonIcon = () => (
-  <svg viewBox="0 0 24 24" className="h-7 w-7">
-    <path d="M11.97 0C5.356 0 5.483 2.87 5.483 2.87v2.666h6.634v.933H5.215S2.235 6.136 2.235 12.02c0 5.88 2.628 5.766 2.628 5.766h1.564V15.42s-.083-2.316 2.247-2.316h6.586s2.203-.02 2.203-2.148V4.394s.157-4.394-5.493-4.394zm-2.88 1.488a.933.933 0 1 1 0 1.866.933.933 0 0 1 0-1.866z" fill="#3776AB" />
-    <path d="M12.03 24c6.614 0 6.487-2.87 6.487-2.87v-2.666h-6.634v-.933h6.902s2.98.333 2.98-5.551c0-5.88-2.628-5.766-2.628-5.766h-1.564V8.58s.083 2.316-2.247 2.316H8.75s-2.203.02-2.203 2.148v6.562s-.157 4.394 5.493 4.394zm2.88-1.488a.933.933 0 1 1 0-1.866.933.933 0 0 1 0 1.866z" fill="#FFE052" />
-  </svg>
-);
-
 const techItems = [
   {
-    name: "SQL Database",
-    icon: <Database className="h-7 w-7 text-cyan-400" />,
-    glowColor: "rgba(34, 211, 238, 0.4)",
-    borderColor: "hover:border-cyan-500/50",
+    name: "Next.js",
+    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" className="h-7 w-7 filter invert dark:invert-0" alt="Next.js" />,
+    glowColor: "rgba(255, 255, 255, 0.2)",
+    borderColor: "hover:border-white/30",
   },
   {
-    name: "Python",
-    icon: <PythonIcon />,
+    name: "TypeScript",
+    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" className="h-7 w-7" alt="TypeScript" />,
     glowColor: "rgba(59, 130, 246, 0.4)",
     borderColor: "hover:border-blue-500/50",
   },
   {
-    name: "Tailwind CSS",
-    icon: <TailwindIcon />,
-    glowColor: "rgba(56, 189, 248, 0.4)",
-    borderColor: "hover:border-sky-400/50",
+    name: "Flutter",
+    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" className="h-7 w-7" alt="Flutter" />,
+    glowColor: "rgba(2, 132, 199, 0.4)",
+    borderColor: "hover:border-sky-500/50",
   },
   {
-    name: "AI Agents",
-    icon: <Bot className="h-7 w-7 text-purple-400" />,
+    name: "React",
+    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" className="h-7 w-7" alt="React" />,
+    glowColor: "rgba(6, 182, 212, 0.4)",
+    borderColor: "hover:border-cyan-500/50",
+  },
+  {
+    name: "Node.js",
+    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" className="h-7 w-7" alt="Node.js" />,
+    glowColor: "rgba(34, 197, 94, 0.4)",
+    borderColor: "hover:border-green-500/50",
+  },
+  {
+    name: "AWS",
+    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" className="h-7 w-7" alt="AWS" />,
+    glowColor: "rgba(249, 115, 22, 0.4)",
+    borderColor: "hover:border-orange-500/50",
+  },
+  {
+    name: "Docker",
+    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" className="h-7 w-7" alt="Docker" />,
+    glowColor: "rgba(14, 165, 233, 0.4)",
+    borderColor: "hover:border-sky-500/50",
+  },
+  {
+    name: "Kubernetes",
+    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-original.svg" className="h-7 w-7" alt="Kubernetes" />,
+    glowColor: "rgba(59, 130, 246, 0.4)",
+    borderColor: "hover:border-blue-500/50",
+  },
+  {
+    name: "Terraform",
+    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" className="h-7 w-7" alt="Terraform" />,
     glowColor: "rgba(168, 85, 247, 0.4)",
     borderColor: "hover:border-purple-500/50",
   },
+  // Second set for continuous rotation
   {
-    name: "GitHub",
-    icon: <Github className="h-7 w-7 text-white" />,
+    name: "Next.js",
+    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" className="h-7 w-7 filter invert dark:invert-0" alt="Next.js" />,
     glowColor: "rgba(255, 255, 255, 0.2)",
     borderColor: "hover:border-white/30",
+  },
+  {
+    name: "TypeScript",
+    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" className="h-7 w-7" alt="TypeScript" />,
+    glowColor: "rgba(59, 130, 246, 0.4)",
+    borderColor: "hover:border-blue-500/50",
+  },
+  {
+    name: "Flutter",
+    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" className="h-7 w-7" alt="Flutter" />,
+    glowColor: "rgba(2, 132, 199, 0.4)",
+    borderColor: "hover:border-sky-500/50",
+  },
+  {
+    name: "React",
+    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" className="h-7 w-7" alt="React" />,
+    glowColor: "rgba(6, 182, 212, 0.4)",
+    borderColor: "hover:border-cyan-500/50",
+  },
+  {
+    name: "Node.js",
+    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" className="h-7 w-7" alt="Node.js" />,
+    glowColor: "rgba(34, 197, 94, 0.4)",
+    borderColor: "hover:border-green-500/50",
+  },
+  {
+    name: "AWS",
+    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" className="h-7 w-7" alt="AWS" />,
+    glowColor: "rgba(249, 115, 22, 0.4)",
+    borderColor: "hover:border-orange-500/50",
+  },
+  {
+    name: "Docker",
+    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" className="h-7 w-7" alt="Docker" />,
+    glowColor: "rgba(14, 165, 233, 0.4)",
+    borderColor: "hover:border-sky-500/50",
+  },
+  {
+    name: "Kubernetes",
+    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-original.svg" className="h-7 w-7" alt="Kubernetes" />,
+    glowColor: "rgba(59, 130, 246, 0.4)",
+    borderColor: "hover:border-blue-500/50",
+  },
+  {
+    name: "Terraform",
+    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" className="h-7 w-7" alt="Terraform" />,
+    glowColor: "rgba(168, 85, 247, 0.4)",
+    borderColor: "hover:border-purple-500/50",
   },
 ];
 
@@ -151,12 +213,12 @@ export const TechCurve: React.FC = () => {
       {techItems.map((item, idx) => {
         const isHovered = hoveredIndex === idx;
         
-        // Offset each card by 20% of the circle (20 steps out of 100)
-        const keyframes = generateKeyframes(idx * 20);
+        // Offset each card evenly spaced along the 100-step orbit circle
+        const keyframes = generateKeyframes(idx * (100 / techItems.length));
 
         return (
           <div
-            key={item.name}
+            key={`${item.name}-${idx}`}
             className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-auto z-30"
           >
             <motion.div
