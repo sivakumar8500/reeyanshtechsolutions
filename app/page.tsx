@@ -45,7 +45,7 @@ export default function Home() {
     <div className="relative w-full overflow-hidden">
       
       {/* 1. HERO SECTION */}
-      <section className="relative min-h-[90vh] flex items-center justify-center py-20 lg:py-28 overflow-hidden">
+      <section className="relative min-h-[90vh] flex items-center justify-center pt-6 pb-12 lg:pt-8 lg:pb-16 overflow-hidden">
         <MolecularBackground />
         
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-20 w-full">
@@ -92,7 +92,7 @@ export default function Home() {
             </div>
 
             {/* Right Column: Animated Tech Curve */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end relative w-full h-[400px] sm:h-[450px] md:h-[500px] lg:h-[550px] mt-10 lg:mt-0">
+            <div className="lg:col-span-5 flex justify-center items-center relative w-full h-[420px] sm:h-[460px] lg:h-[500px] mt-6 lg:mt-0">
               <ScrollReveal direction="left" delay={0.3} className="w-full h-full flex items-center justify-center">
                 <TechCurve />
               </ScrollReveal>
