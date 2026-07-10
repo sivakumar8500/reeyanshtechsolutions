@@ -56,63 +56,8 @@ const techItems = [
     icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" className="h-7 w-7" alt="Terraform" />,
     glowColor: "rgba(168, 85, 247, 0.4)",
     borderColor: "hover:border-purple-500/50",
-  },
-  // Second set for continuous rotation
-  {
-    name: "Next.js",
-    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" className="h-7 w-7 filter invert dark:invert-0" alt="Next.js" />,
-    glowColor: "rgba(255, 255, 255, 0.2)",
-    borderColor: "hover:border-white/30",
-  },
-  {
-    name: "TypeScript",
-    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" className="h-7 w-7" alt="TypeScript" />,
-    glowColor: "rgba(59, 130, 246, 0.4)",
-    borderColor: "hover:border-blue-500/50",
-  },
-  {
-    name: "Flutter",
-    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" className="h-7 w-7" alt="Flutter" />,
-    glowColor: "rgba(2, 132, 199, 0.4)",
-    borderColor: "hover:border-sky-500/50",
-  },
-  {
-    name: "React",
-    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" className="h-7 w-7" alt="React" />,
-    glowColor: "rgba(6, 182, 212, 0.4)",
-    borderColor: "hover:border-cyan-500/50",
-  },
-  {
-    name: "Node.js",
-    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" className="h-7 w-7" alt="Node.js" />,
-    glowColor: "rgba(34, 197, 94, 0.4)",
-    borderColor: "hover:border-green-500/50",
-  },
-  {
-    name: "AWS",
-    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" className="h-7 w-7" alt="AWS" />,
-    glowColor: "rgba(249, 115, 22, 0.4)",
-    borderColor: "hover:border-orange-500/50",
-  },
-  {
-    name: "Docker",
-    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" className="h-7 w-7" alt="Docker" />,
-    glowColor: "rgba(14, 165, 233, 0.4)",
-    borderColor: "hover:border-sky-500/50",
-  },
-  {
-    name: "Kubernetes",
-    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-original.svg" className="h-7 w-7" alt="Kubernetes" />,
-    glowColor: "rgba(59, 130, 246, 0.4)",
-    borderColor: "hover:border-blue-500/50",
-  },
-  {
-    name: "Terraform",
-    icon: <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" className="h-7 w-7" alt="Terraform" />,
-    glowColor: "rgba(168, 85, 247, 0.4)",
-    borderColor: "hover:border-purple-500/50",
-  },
 ];
+
 
 // Calculate keyframes for a perfect circular path (from angle 90 to 450 degrees)
 // 90 deg = bottom, 180 deg = left (peak on screen), 270 deg = top, 360/0 deg = right (off-screen)
@@ -213,8 +158,8 @@ export const TechCurve: React.FC = () => {
       {techItems.map((item, idx) => {
         const isHovered = hoveredIndex === idx;
         
-        // Space items with wider gaps (use 12 virtual slots for 18 items gives wider separation)
-        const keyframes = generateKeyframes(idx * (100 / 12));
+        // Space 9 items evenly across the full orbit circle
+        const keyframes = generateKeyframes(idx * (100 / techItems.length));
 
         return (
           <div
