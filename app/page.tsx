@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { ArrowRight, Code2, Smartphone, Palette, Cloud, CheckCircle, ArrowUpRight, Star } from "lucide-react";
@@ -42,54 +42,65 @@ const techStack = [
 ];
 
 export default function Home() {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    // Check if client is desktop
+    setIsDesktop(window.innerWidth >= 1024);
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div className="relative w-full overflow-hidden">
       
       {/* 1. HERO SECTION */}
       <section className="relative min-h-[90vh] flex items-center justify-center pt-6 pb-12 lg:pt-8 lg:pb-16 overflow-hidden">
-        <MolecularBackground />
+        {isDesktop ? (
+          <MolecularBackground />
+        ) : (
+          <div className="absolute inset-0 z-0 w-full h-full bg-slate-950 overflow-hidden">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(2,6,23,0.85)_100%)] pointer-events-none z-10" />
+            <div className="absolute inset-0 opacity-15 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)]" />
+          </div>
+        )}
         
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-20 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Left Column: Hero Content */}
             <div className="lg:col-span-7 text-center lg:text-left flex flex-col items-center lg:items-start">
-              <ScrollReveal direction="up" delay={0.1}>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-xs font-semibold uppercase tracking-wider text-indigo-300 backdrop-blur-md mb-6">
-                  Empowering Digital Innovation
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-xs font-semibold uppercase tracking-wider text-indigo-300 backdrop-blur-md mb-6 animate-fade-in">
+                Empowering Digital Innovation
+              </span>
+
+              <h1 className="font-outfit text-4xl sm:text-6xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-white leading-tight">
+                Architecting Next-Gen{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500">
+                  Digital Ecosystems
                 </span>
-              </ScrollReveal>
+              </h1>
 
-              <ScrollReveal direction="up" delay={0.25}>
-                <h1 className="font-outfit text-4xl sm:text-6xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-white leading-tight">
-                  Architecting Next-Gen{" "}
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500">
-                    Digital Ecosystems
-                  </span>
-                </h1>
-              </ScrollReveal>
+              <p className="max-w-2xl text-base sm:text-lg md:text-xl text-slate-300 mt-6 leading-relaxed">
+                We design, build, and deploy premium enterprise web applications, cross-platform mobile products, and automated cloud infrastructures.
+              </p>
 
-              <ScrollReveal direction="up" delay={0.4}>
-                <p className="max-w-2xl text-base sm:text-lg md:text-xl text-slate-300 mt-6 leading-relaxed">
-                  We design, build, and deploy premium enterprise web applications, cross-platform mobile products, and automated cloud infrastructures.
-                </p>
-              </ScrollReveal>
-
-              <ScrollReveal direction="up" delay={0.55}>
-                <div className="flex flex-col sm:flex-row items-center gap-4 mt-10 w-full sm:w-auto">
-                  <Link href="/services/" className="w-full sm:w-auto">
-                    <Button size="lg" className="w-full gap-2 group">
-                      Explore Services
-                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                    </Button>
-                  </Link>
-                  <Link href="/contact/" className="w-full sm:w-auto">
-                    <Button size="lg" variant="secondary" className="w-full">
-                      Let's Collaborate
-                    </Button>
-                  </Link>
-                </div>
-              </ScrollReveal>
+              <div className="flex flex-col sm:flex-row items-center gap-4 mt-10 w-full sm:w-auto">
+                <Link href="/services/" className="w-full sm:w-auto">
+                  <Button size="lg" className="w-full gap-2 group">
+                    Explore Services
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Button>
+                </Link>
+                <Link href="/contact/" className="w-full sm:w-auto">
+                  <Button size="lg" variant="secondary" className="w-full">
+                    Let's Collaborate
+                  </Button>
+                </Link>
+              </div>
             </div>
 
             {/* Desktop right-side orbit (lg+) */}

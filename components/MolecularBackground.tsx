@@ -10,7 +10,7 @@ interface MolecularBackgroundProps {
 }
 
 export const MolecularBackground: React.FC<MolecularBackgroundProps> = ({
-  particleCount = 120,
+  particleCount = 80,
   connectionDistance = 80,
   speed = 0.5,
 }) => {
@@ -43,7 +43,7 @@ export const MolecularBackground: React.FC<MolecularBackgroundProps> = ({
       alpha: true,
       powerPreference: "high-performance",
     });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.setSize(container.clientWidth, container.clientHeight);
 
     // Bounding Box limits for particle movement
