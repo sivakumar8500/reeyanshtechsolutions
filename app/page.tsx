@@ -77,12 +77,13 @@ export default function Home() {
                 Empowering Digital Innovation
               </span>
 
-              <h1 className="font-outfit text-4xl sm:text-6xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-white leading-tight">
-                Architecting Next-Gen{" "}
+              <h1 className="font-outfit text-5xl sm:text-6xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-white leading-tight">
+                <span className="whitespace-nowrap">Architecting Next-Gen</span>{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-500">
                   Digital Ecosystems
                 </span>
               </h1>
+
 
               <p className="max-w-2xl text-base sm:text-lg md:text-xl text-slate-300 mt-6 leading-relaxed">
                 We design, build, and deploy premium enterprise web applications, cross-platform mobile products, and automated cloud infrastructures.
@@ -170,7 +171,7 @@ export default function Home() {
       </section>
 
       {/* 3. TECH STACK SHOWCASE */}
-      <section className="py-20 border-t border-slate-900 bg-slate-950/60 relative">
+      <section className="py-12 border-t border-slate-900 bg-slate-950/60 relative">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-12">
@@ -205,7 +206,7 @@ export default function Home() {
       </section>
 
       {/* 4. CLIENT TESTIMONIALS */}
-      <section className="py-24 bg-slate-950 border-t border-slate-900 relative">
+      <section className="py-16 bg-slate-950 border-t border-slate-900 relative">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           
           <div className="text-center max-w-3xl mx-auto mb-16">
