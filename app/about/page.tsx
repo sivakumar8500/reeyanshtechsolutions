@@ -7,15 +7,29 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { teamData } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "About Us & Engineering Leadership",
-  description: "Learn about the mission, values, and engineering leadership team of Reeyansh Tech Solutions.",
-  alternates: {
-    canonical: "/about/",
-  },
+  title: "About Us | Our Mission, Team & Engineering Leadership",
+  description:
+    "Reeyansh Tech Solutions is a Hyderabad-based tech company with 45+ engineers delivering enterprise web, mobile apps, and cloud solutions. Meet our leadership team and discover our mission.",
+  keywords: [
+    "About Reeyansh Tech Solutions",
+    "Software Company Hyderabad",
+    "IT Company Telangana India",
+    "Engineering Leadership Team",
+    "Tech Startup Hyderabad",
+  ],
+  alternates: { canonical: "/about/" },
   openGraph: {
-    title: "About Us & Engineering Leadership | Reeyansh Tech Solutions",
-    description: "Learn about the mission, values, and engineering leadership team of Reeyansh Tech Solutions.",
-    url: "https://rts.billnserve.com/about/",
+    title: "About Us | Mission, Team & Leadership | Reeyansh Tech Solutions",
+    description:
+      "Meet the engineering leadership team powering Reeyansh Tech Solutions — 45+ engineers, 150+ projects, 95% client retention. Based in Hyderabad, India.",
+    url: "https://www.reeyanshtech.in/about/",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "About Reeyansh Tech Solutions" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Reeyansh Tech Solutions | Engineering Leadership",
+    description: "45+ engineers. 150+ projects. 95% retention. Meet the team behind India's premium software company.",
+    images: ["/og-image.jpg"],
   },
 };
 

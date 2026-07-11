@@ -8,15 +8,32 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { servicesData } from "@/lib/data";
 
 export const metadata: Metadata = {
-  title: "Enterprise Software Services",
-  description: "Explore our premium engineering offerings: Web Applications, Mobile Applications, Data Analytics, and Agentic AI development.",
-  alternates: {
-    canonical: "/services/",
-  },
+  title: "Our Services | Web, Mobile App, Cloud & DevOps Development",
+  description:
+    "Explore Reeyansh Tech Solutions' full range of services: Next.js web applications, Flutter mobile apps, UI/UX design, AWS cloud architecture, and DevOps automation. Enterprise-grade. India-based.",
+  keywords: [
+    "Web Development Services India",
+    "Flutter App Development",
+    "Next.js Development Company",
+    "Cloud DevOps Services",
+    "UI UX Design Services Hyderabad",
+    "Enterprise Software Services",
+    "AWS Cloud Architecture India",
+    "Mobile App Development Company",
+  ],
+  alternates: { canonical: "/services/" },
   openGraph: {
-    title: "Enterprise Software Services | Reeyansh Tech Solutions",
-    description: "Explore our premium engineering offerings: Web Applications, Mobile Applications, Data Analytics, and Agentic AI development.",
-    url: "https://rts.billnserve.com/services/",
+    title: "Our Services | Web, Mobile, Cloud & DevOps | Reeyansh Tech Solutions",
+    description:
+      "Premium engineering services: Next.js web apps, Flutter mobile apps, UI/UX design, AWS/GCP cloud infrastructure, and DevOps automation. Enterprise-ready from Hyderabad, India.",
+    url: "https://www.reeyanshtech.in/services/",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Reeyansh Tech Solutions Services" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Services | Reeyansh Tech Solutions",
+    description: "Next.js, Flutter, AWS, DevOps & UI/UX — enterprise software services from Hyderabad, India.",
+    images: ["/og-image.jpg"],
   },
 };
 

@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rts.billnserve.com/sitemap.xml
+Sitemap: https://www.reeyanshtech.in/sitemap.xml
+
+Host: https://www.reeyanshtech.in
