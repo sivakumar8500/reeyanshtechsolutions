@@ -1,10 +1,9 @@
 import React from "react";
 import { Metadata } from "next";
 import Link from "next/link";
-import { Twitter, Linkedin, Github, Award, Users, Compass, Eye, ShieldCheck, Flame } from "lucide-react";
+import { Award, Users, Compass, Eye, ShieldCheck, Flame } from "lucide-react";
 import Card from "@/components/ui/Card";
 import ScrollReveal from "@/components/ScrollReveal";
-import { teamData } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "About Us | Our Mission, Team & Engineering Leadership",
@@ -38,7 +37,6 @@ export default function About() {
     { label: "Projects Completed", value: "150+" },
     { label: "Active Engineers", value: "45+" },
     { label: "Client Retention Rate", value: "95%" },
-    { label: "Years of Excellence", value: "5+" },
   ];
 
   const values = [
@@ -97,7 +95,7 @@ export default function About() {
               </p>
 
               {/* Stats Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6">
                 {stats.map((stat) => (
                   <div key={stat.label} className="border-l-2 border-indigo-500/50 pl-4">
                     <div className="font-outfit text-2xl sm:text-3xl font-extrabold text-white">{stat.value}</div>
@@ -185,66 +183,7 @@ export default function About() {
           </div>
         </div>
 
-        {/* Leadership / Team Section */}
-        <div>
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <ScrollReveal direction="up">
-              <h2 className="font-outfit text-3xl font-extrabold text-white">Meet Our Leaders</h2>
-              <p className="text-slate-400 text-sm mt-3">The experienced technology architects and visionaries guiding our projects.</p>
-            </ScrollReveal>
-          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {teamData.map((member, index) => (
-              <ScrollReveal key={member.id} direction="up" delay={index * 0.1}>
-                <Card className="h-full flex flex-col justify-between p-5 group" glowColor="blue">
-                  <div>
-                    {/* Visual Gradient Header Avatar */}
-                    <div className={`w-full aspect-square rounded-xl bg-gradient-to-br ${member.imageGradient} flex items-center justify-center text-4xl font-extrabold text-white mb-5 shadow-inner relative overflow-hidden`}>
-                      {member.imagePath ? (
-                        <img
-                          src={`${process.env.NEXT_PUBLIC_BASE_PATH || ""}${member.imagePath}`}
-                          alt={member.name}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                      ) : (
-                        member.name.split(" ").map(n => n[0]).join("")
-                      )}
-                      {/* Subtle hover overlay effect */}
-                      <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </div>
-                    
-                    <h3 className="font-outfit text-lg font-bold text-white">{member.name}</h3>
-                    <p className="text-xs font-semibold text-indigo-400 mt-1">{member.role}</p>
-                    
-                    <p className="text-slate-400 text-xs mt-3 leading-relaxed">
-                      {member.bio}
-                    </p>
-                  </div>
-
-                  {/* Social Handles */}
-                  <div className="flex gap-3 mt-6 pt-4 border-t border-slate-900">
-                    {member.socials.linkedin && (
-                      <a href={member.socials.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-white transition-colors duration-250" aria-label={`${member.name} LinkedIn`}>
-                        <Linkedin className="h-4 w-4" />
-                      </a>
-                    )}
-                    {member.socials.twitter && (
-                      <a href={member.socials.twitter} target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-white transition-colors duration-250" aria-label={`${member.name} Twitter`}>
-                        <Twitter className="h-4 w-4" />
-                      </a>
-                    )}
-                    {member.socials.github && (
-                      <a href={member.socials.github} target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-white transition-colors duration-250" aria-label={`${member.name} GitHub`}>
-                        <Github className="h-4 w-4" />
-                      </a>
-                    )}
-                  </div>
-                </Card>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
 
       </div>
     </div>
